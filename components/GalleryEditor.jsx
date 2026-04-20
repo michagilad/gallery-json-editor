@@ -578,7 +578,7 @@ const GalleryEditor = () => {
           <div className="flex gap-3 mt-4">
             <button
               onClick={handleJsonLoad}
-              title="Parse the JSON you pasted above and open it in the editor."
+              data-tooltip="Parse the JSON you pasted above and open it in the editor."
               className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
             >
               <Upload size={16} />
@@ -586,7 +586,7 @@ const GalleryEditor = () => {
             </button>
             <button
               onClick={handleSampleLoad}
-              title="Load a ready-made example gallery so you can try the editor."
+              data-tooltip="Load a ready-made example gallery so you can try the editor."
               className="flex items-center gap-2 px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors"
             >
               <Eye size={16} />
@@ -623,7 +623,7 @@ const GalleryEditor = () => {
         <div className="flex gap-2 flex-wrap justify-end">
           <button
             onClick={() => setShowSettings(!showSettings)}
-            title="Toggle the panel for gallery-wide options like colors, navigation, and layout."
+            data-tooltip="Toggle the panel for gallery-wide options like colors, navigation, and layout."
             className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${
               showSettings
                 ? "bg-indigo-600 text-white hover:bg-indigo-700"
@@ -635,7 +635,7 @@ const GalleryEditor = () => {
           </button>
           <button
             onClick={() => setPreviewMode(!previewMode)}
-            title={
+            data-tooltip={
               previewMode
                 ? "Return to the editor so you can make changes."
                 : "See a read-only preview of how your items and modules read together."
@@ -647,7 +647,7 @@ const GalleryEditor = () => {
           </button>
           <button
             onClick={handleAddNewItem}
-            title="Append a new empty gallery item with a blank video module."
+            data-tooltip="Append a new empty gallery item with a blank video module."
             className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
           >
             <Plus size={16} />
@@ -662,7 +662,7 @@ const GalleryEditor = () => {
                 ? "bg-red-600 hover:bg-red-700"
                 : "bg-blue-600 hover:bg-blue-700"
             }`}
-            title="Copy the entire current gallery JSON to your clipboard."
+            data-tooltip="Copy the entire current gallery JSON to your clipboard."
           >
             {copyStatus === "copied" ? (
               <>
@@ -683,7 +683,7 @@ const GalleryEditor = () => {
           </button>
           <button
             onClick={handleExportJson}
-            title="Open a modal to view or copy the full gallery JSON."
+            data-tooltip="Open a modal to view or copy the full gallery JSON."
             className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
           >
             <Download size={16} />
@@ -691,7 +691,7 @@ const GalleryEditor = () => {
           </button>
           <button
             onClick={() => setShowJsonInput(true)}
-            title="Discard the current data and return to the JSON import screen."
+            data-tooltip="Discard the current data and return to the JSON import screen."
             className="flex items-center gap-2 px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors"
           >
             <Settings size={16} />
@@ -887,13 +887,13 @@ const GalleryEditor = () => {
                       onDragStart={(e) =>
                         handleItemDragStart(e, item, itemIndex)
                       }
-                      title="Drag to reorder this item in the gallery."
+                      data-tooltip="Drag to reorder this item in the gallery."
                     >
                       <GripVertical size={16} className="text-gray-400" />
                     </div>
                     <button
                       onClick={() => toggleItemExpansion(item.id)}
-                      title={
+                      data-tooltip={
                         expandedItems[item.id]
                           ? "Collapse this item to hide its modules."
                           : "Expand this item to show and edit its modules."
@@ -928,7 +928,7 @@ const GalleryEditor = () => {
                       <button
                         onClick={() => moveItem(itemIndex, itemIndex - 1)}
                         className="p-2 text-gray-600 hover:bg-gray-100 rounded"
-                        title="Move this item one position up in the list."
+                        data-tooltip="Move this item one position up in the list."
                       >
                         <ArrowUp size={16} />
                       </button>
@@ -937,7 +937,7 @@ const GalleryEditor = () => {
                       <button
                         onClick={() => moveItem(itemIndex, itemIndex + 1)}
                         className="p-2 text-gray-600 hover:bg-gray-100 rounded"
-                        title="Move this item one position down in the list."
+                        data-tooltip="Move this item one position down in the list."
                       >
                         <ArrowDown size={16} />
                       </button>
@@ -945,21 +945,21 @@ const GalleryEditor = () => {
                     <button
                       onClick={() => handleAddNewModule(itemIndex)}
                       className="p-2 text-green-600 hover:bg-green-50 rounded"
-                      title="Append a new empty video module to this item."
+                      data-tooltip="Append a new empty video module to this item."
                     >
                       <PlusCircle size={16} />
                     </button>
                     <button
                       onClick={() => handleDuplicateItem(item.id)}
                       className="p-2 text-green-600 hover:bg-green-50 rounded"
-                      title="Create a copy of this item (with all its modules) right below."
+                      data-tooltip="Create a copy of this item (with all its modules) right below."
                     >
                       <Copy size={16} />
                     </button>
                     <button
                       onClick={() => handleDeleteItem(item.id)}
                       className="p-2 text-red-600 hover:bg-red-50 rounded"
-                      title="Delete this item and all of its modules (asks for confirmation)."
+                      data-tooltip="Delete this item and all of its modules (asks for confirmation)."
                       type="button"
                     >
                       <Trash2 size={16} />
@@ -1044,7 +1044,7 @@ const GalleryEditor = () => {
                           <div className="flex items-center gap-3 min-w-0">
                             <div
                               className="cursor-grab active:cursor-grabbing"
-                              title="Drag to reorder this module or move it into another item."
+                              data-tooltip="Drag to reorder this module or move it into another item."
                             >
                               <Move size={14} className="text-gray-400" />
                             </div>
@@ -1085,7 +1085,7 @@ const GalleryEditor = () => {
                                       ? "text-purple-600 hover:bg-purple-50"
                                       : "text-gray-300 cursor-not-allowed"
                                   }`}
-                                  title={
+                                  data-tooltip={
                                     assetUrl
                                       ? "Open this module's video asset in a new browser tab."
                                       : "No asset ID is set on this module, so there's nothing to play."
@@ -1114,7 +1114,7 @@ const GalleryEditor = () => {
                                       ? "text-amber-600 hover:bg-amber-50 cursor-grab active:cursor-grabbing"
                                       : "text-gray-300 cursor-not-allowed"
                                   } ${isActive ? "ring-2 ring-amber-400" : ""}`}
-                                  title={
+                                  data-tooltip={
                                     hasId
                                       ? "Drag this onto another module to replace that module's asset ID with this one."
                                       : "No asset ID on this module, so there's nothing to copy onto another module."
@@ -1130,7 +1130,7 @@ const GalleryEditor = () => {
                                 handleEditModule(itemIndex, moduleIndex)
                               }
                               className="p-1 text-blue-600 hover:bg-blue-50 rounded"
-                              title="Open the full editor for this module's video, loop, and text box."
+                              data-tooltip="Open the full editor for this module's video, loop, and text box."
                             >
                               <Edit2 size={14} />
                             </button>
@@ -1139,7 +1139,7 @@ const GalleryEditor = () => {
                                 handleDuplicateModule(itemIndex, moduleIndex)
                               }
                               className="p-1 text-green-600 hover:bg-green-50 rounded"
-                              title="Insert an identical copy of this module right after it."
+                              data-tooltip="Insert an identical copy of this module right after it."
                             >
                               <Copy size={14} />
                             </button>
@@ -1148,7 +1148,7 @@ const GalleryEditor = () => {
                                 handleDeleteModule(itemIndex, moduleIndex)
                               }
                               className="p-1 text-red-600 hover:bg-red-50 rounded"
-                              title="Remove this module from its item (asks for confirmation)."
+                              data-tooltip="Remove this module from its item (asks for confirmation)."
                             >
                               <Trash2 size={14} />
                             </button>
@@ -1176,7 +1176,7 @@ const GalleryEditor = () => {
               <h2 className="text-xl font-semibold">Export JSON</h2>
               <button
                 onClick={() => setShowJsonOutput(false)}
-                title="Close this export dialog and return to the editor."
+                data-tooltip="Close this export dialog and return to the editor."
                 className="p-2 hover:bg-gray-100 rounded"
               >
                 <X size={16} />
@@ -1320,7 +1320,7 @@ const ModuleEditor = ({
           </h2>
           <button
             onClick={() => setEditingModule(null)}
-            title="Close this editor without saving your changes."
+            data-tooltip="Close this editor without saving your changes."
             className="p-2 hover:bg-gray-100 rounded"
           >
             <X size={16} />
@@ -1374,7 +1374,7 @@ const ModuleEditor = ({
                               ? "bg-purple-600 text-white hover:bg-purple-700"
                               : "bg-gray-100 text-gray-400 cursor-not-allowed"
                           }`}
-                          title={
+                          data-tooltip={
                             assetUrl
                               ? "Open the current asset ID in a new browser tab."
                               : "Enter a valid asset entity ID above to enable this button."
