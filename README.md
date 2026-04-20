@@ -6,12 +6,14 @@ Built with [Next.js](https://nextjs.org/) (App Router), [Tailwind CSS](https://t
 
 ## Features
 
-- Drag & drop reordering of gallery items
-- Drag & drop modules between items
-- Inline editing of item names, module titles, and descriptions
-- Add, duplicate, and delete items and modules
-- Preview mode and JSON export modal
-- Sample data loader to get started quickly
+- **Gallery-level settings panel** — edit `textColor`, `backgroundColor`, `showPBE`, `navigation.showBackButton`, `layout.buttonsContainerHeight`, `layout.navButtonsLocation`
+- **Item editing** — rename, reorder via drag & drop, and edit the item's `icon` asset ID inline
+- **Module editing** — full modal for video `entity.entityId`, `loop`, `textBox` title/description, and `textBox` text / background colors (with color pickers)
+- **Drag & drop** reordering of gallery items and movement of modules between items
+- **Add / duplicate / delete** items and modules
+- **Preview mode** and **JSON export** modal
+- **Sample data loader** that matches the current gallery schema
+- Unknown/new fields in imported JSON are preserved on export (round-trip safe)
 
 ## Getting Started
 
@@ -75,22 +77,40 @@ components/
         {
           "itemType": "videoModule",
           "video": {
-            "entity": { "entityId": "...", "entityType": "assets" },
+            "entity": { "entityType": "assets", "entityId": "..." },
             "assetType": "video"
           },
           "loop": true,
           "textBox": {
             "textColor": "#000000",
             "bgColor": "#F6F6F6",
-            "title": "Module title",
-            "description": "Module description"
+            "title": "(optional)",
+            "description": "(optional)"
           }
         }
-      ]
+      ],
+      "icon": {
+        "assetType": "image",
+        "entity": { "entityType": "assets", "entityId": "..." }
+      }
     }
-  ]
+  ],
+  "showPBE": false,
+  "navigation": { "showBackButton": false },
+  "textColor": "Primary",
+  "backgroundColor": "Secondary",
+  "layout": {
+    "buttonsContainerHeight": 57,
+    "navButtonsLocation": "nav"
+  }
 }
 ```
+
+Notes:
+
+- Module `textBox.title` and `textBox.description` are optional. The editor shows a sensible fallback label in the list and preserves absence on export.
+- Item `icon` is optional but supported — the editor displays an inline editor for its `entity.entityId`.
+- Any extra top-level or nested keys in your imported JSON that the editor doesn't know about are passed through untouched on export.
 
 ## License
 
